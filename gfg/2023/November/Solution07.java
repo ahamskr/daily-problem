@@ -1,4 +1,4 @@
-// Letters Collection
+// Sum of upper and lower triangles
 
 class Solution07
 {
