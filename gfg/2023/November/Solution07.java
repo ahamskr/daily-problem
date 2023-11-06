@@ -1,30 +1,21 @@
 // Letters Collection
 
-class Solution07{
-    static List<Integer> matrixSum(int n, int m, int mat[][], int q, int queries[][])
+class Solution07
+{
+    //Function to return sum of upper and lower triangles of a matrix.
+    static ArrayList<Integer> sumTriangles(int matrix[][], int n)
     {
         // code here
-        List<Integer> ans=new ArrayList<>();
-        for(int i=0;i<q;i++){
-            int cur=0;
-            if(queries[i][0]==1){
-                for(int k=-1;k<=1;k++){
-                    for(int j=-1;j<=1;j++){
-                        int r=k+queries[i][1],c=j+queries[i][2];
-                        if((k==-1||k==1||j==-1||j==1)&&r>=0&&c>=0&&r<n&&c<m) cur+=mat[r][c];
-                    }
-                }
+        int lower=0,upper=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(i>=j) lower+=matrix[i][j];
+                if(i<=j) upper+=matrix[i][j];
             }
-            else{
-                for(int k=-2;k<=2;k++){
-                    for(int j=-2;j<=2;j++){
-                        int r=k+queries[i][1],c=j+queries[i][2];
-                        if((k==-2||k==2||j==-2||j==2)&&r>=0&&c>=0&&r<n&&c<m) cur+=mat[r][c];
-                    }
-                }
-            }
-            ans.add(cur);
         }
+        ArrayList<Integer> ans=new ArrayList<Integer>();
+        ans.add(upper);
+        ans.add(lower);
         return ans;
     }
 }
